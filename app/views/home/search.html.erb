@@ -1,0 +1,26 @@
+<h4>Risultati per "<%= params[:text2find] %>"</h4>
+ 
+<p>Trovati su Wikipedia:</p>
+
+<div class="row col-8">
+
+    <table class="table">
+        <tr>
+            <th>Testo</th>
+            <th>Snippet</th>
+            <th></th>
+        </tr>
+    <% @wikires['query']['search'].each do |result| %>
+        <tr>
+            <td><%= result['title'] %></td>
+            <td><%= strip_tags(HTMLEntities.new.decode(result['snippet'])) %>[...]</td>
+            <td><a href="https://it.wikipedia.org/wiki/<%= result['title'] %>" target="_blank" class="btn btn-secondary">Vai</a></td>
+        </tr>
+    <% end %>
+    </table>
+
+</div>
+
+<div class="d-grid gap-2 d-md-block">
+    <a href="/" class="btn btn-primary">Indietro</a>
+</div>
