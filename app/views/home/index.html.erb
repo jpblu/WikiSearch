@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fab fa-wikipedia-w"></i></span>
-                <%= form.text_field :text2find, class: 'form-control', placeholder: 'Inserisci testo da cercare...' %>
+                <%= form.text_field :wikiword, class: 'form-control', placeholder: 'Inserisci testo da cercare...' %>
             </div>
         </div>
 
@@ -18,3 +18,32 @@
     <% end %>
 
 </div>
+
+<% if !flash.empty? %>
+<div class="row">
+    <div class="alert alert-danger col-3">
+        <ul>
+        <% flash[:error].each do |type, msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+</div>
+
+<% if !@mstsrc.empty? %>
+<div class="row">
+
+    <div class="card col-4">
+        <div class="card-header">Le 5 parole più cercate</div>
+        <ul class="list-group list-group-flush">
+            <% @mstsrc.each do |word| %>
+            <li class="list-group-item"><%= word %></li>
+            <% end %>
+        </ul>
+    </div>
+
+</div>
+<% end %>
